@@ -1,5 +1,3 @@
-<?php
-
 $phone = $argv[1];
 $frequency = $argv[2];
 $firstname = $argv[3];
@@ -45,4 +43,3 @@ foreach ($facts as $fact) {
 	}
 	$count = $count + 1;
 }
-?>
