@@ -87,6 +87,12 @@ and open the template in the editor.
 
                 shuffle($facts);
 
+                $pid = pcntl_fork();
+                if ($pid == -1) {
+                   die('could not fork');
+               } else if ($pid) {
+     // we are the parent, do nothing
+               } else {
                 foreach ($facts as $fact) {
 
                     $fact = wordwrap($fact, 70, "\r\n");
@@ -100,68 +106,71 @@ and open the template in the editor.
                     }
                     $count = $count + 1;
                 }
+            }
+
+
 
 
                 //TODO run php in background
-                shell_exec('php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit < /dev/null &');
-                
+            //shell_exec('php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit < /dev/null &');
+
 
                 //$proc = new BackgroundProcess('exec php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit');
 
 
                 //Email response
-                echo "Your friend was just subscribed to useless facts!";
-            }
+            echo "Your friend was just subscribed to useless facts!";
+        }
 
                 //if "email" variable is not filled out, display the form
-            else {
-                ?>
-                <div class="row">
-                    <form class="col s12" method='post'>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="first_name" name='first_name' type="text" placeholder='First Name' class="validate">
-                                <label for="first_name"></label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="last_name" name='last_name' type="text" placeholder='Last Name' class="validate">
-                                <label for="last_name"></label>
-                            </div>
+        else {
+            ?>
+            <div class="row">
+                <form class="col s12" method='post'>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="first_name" name='first_name' type="text" placeholder='First Name' class="validate">
+                            <label for="first_name"></label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="phone" name='phone' type="number"  placeholder="Friend's Number" class="validate">
-                                <label for="phone"></label>
-                            </div>
-                        </div>                         
-                        <div class='row'>
-                            <div class='input-field col s6'>
-                                <input id='frequency' name='frequency' type='number' placeholder='Number of Messages' class='validate'>
-                                <label for='frequency'></label>
-                            </div>
-                            <div class="input-field col s3">
-                                <input id='interval' name='interval' type='number' placeholder = 'Interval between messages' class="validate">
-                                <label for='interval'></label>
-                            </div>
-                            <div class="input-field col s3">
-                                <select name="intervalUnit" class="browser-default">
-                                  <option value="1" selected>Seconds</option>
-                                  <option value="2">Minutes</option>
-                                  <option value="3">Hours</option>
-                              </select>
-                          </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" name='last_name' type="text" placeholder='Last Name' class="validate">
+                            <label for="last_name"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="phone" name='phone' type="number"  placeholder="Friend's Number" class="validate">
+                            <label for="phone"></label>
+                        </div>
+                    </div>                         
+                    <div class='row'>
+                        <div class='input-field col s6'>
+                            <input id='frequency' name='frequency' type='number' placeholder='Number of Messages' class='validate'>
+                            <label for='frequency'></label>
+                        </div>
+                        <div class="input-field col s3">
+                            <input id='interval' name='interval' type='number' placeholder = 'Interval between messages' class="validate">
+                            <label for='interval'></label>
+                        </div>
+                        <div class="input-field col s3">
+                            <select name="intervalUnit" class="browser-default">
+                              <option value="1" selected>Seconds</option>
+                              <option value="2">Minutes</option>
+                              <option value="3">Hours</option>
+                          </select>
                       </div>
-                      <p>
-                        <input type="checkbox" id="test5" class='validate' required='on'/>
-                        <label for="test5">In checking this box, I accept full consequences for any potential legal trouble on behalf of Useless Facts!</label>
-                    </p>
-                    <button class="waves-effect waves-light btn" type='submit' value='submit'>Subscribe Friend</button>
-                </form>
-            </div>
-            <?php } ?>
+                  </div>
+                  <p>
+                    <input type="checkbox" id="test5" class='validate' required='on'/>
+                    <label for="test5">In checking this box, I accept full consequences for any potential legal trouble on behalf of Useless Facts!</label>
+                </p>
+                <button class="waves-effect waves-light btn" type='submit' value='submit'>Subscribe Friend</button>
+            </form>
         </div>
+        <?php } ?>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 </body>
 </html>
 
