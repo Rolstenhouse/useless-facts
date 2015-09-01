@@ -4,3 +4,4 @@
 <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
 <link href="http://fonts.googleapis.com/css?family=Roboto:700,400" rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
