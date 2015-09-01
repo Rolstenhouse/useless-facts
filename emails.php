@@ -4,7 +4,7 @@ $firstname = $argv[3];
 $lastname = $argv[4];
 $interval = $argv[5];
 $intervalUnit = $argv[6];
-ECHO "CAED";
+
 if ($intervalUnit == 2){
 	$interval = $interval*60;
 }

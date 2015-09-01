@@ -103,7 +103,7 @@ and open the template in the editor.
 
 
                 //TODO run php in background
-                shell_exec('php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit < /dev/null &');
+                shell_exec(sprintf('%s > /dev/null 2>&1 & echo $!','php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit < /dev/null &'));
                 
 
                 //$proc = new BackgroundProcess('exec php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit');
