@@ -1,5 +1,3 @@
-#!/usr/local/bin/php
-
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -58,54 +56,54 @@ and open the template in the editor.
                 $interval = $_REQUEST['interval'];
                 $intervalUnit = $_REQUEST['intervalUnit'];
 
-                if ($intervalUnit == 2){
-                    $interval = $interval*60;
-                }
-                elseif($intervalUnit == 3){
-                    $interval = $interval*3600;
-                }
-                $emails = array($phone . '@txt.att.net',
-                    $phone . '@tmomail.net',
-                    $phone . '@vtext.com',
-                    $phone . '@messaging.sprintpcs.com', $phone . '@pm.sprint.com',
-                    $phone . '@vmobl.com',
-                    $phone . '@mmst5.tracfone.com',
-                    $phone . '@mymetropcs.com',
-                    $phone . '@myboostmobile.com',
-                    $phone . '@sms.mycricket.com',
-                    $phone . '@messaging.nextel.com',
-                    $phone . '@message.alltel.com',
-                    $phone . '@ptel.com',
-                    $phone . '@tms.suncom.com',
-                    $phone . '@qwestmp.com',
-                    $phone . '@email.uscc.net',
-                    );
+                // if ($intervalUnit == 2){
+                //     $interval = $interval*60;
+                // }
+                // elseif($intervalUnit == 3){
+                //     $interval = $interval*3600;
+                // }
+                // $emails = array($phone . '@txt.att.net',
+                //     $phone . '@tmomail.net',
+                //     $phone . '@vtext.com',
+                //     $phone . '@messaging.sprintpcs.com', $phone . '@pm.sprint.com',
+                //     $phone . '@vmobl.com',
+                //     $phone . '@mmst5.tracfone.com',
+                //     $phone . '@mymetropcs.com',
+                //     $phone . '@myboostmobile.com',
+                //     $phone . '@sms.mycricket.com',
+                //     $phone . '@messaging.nextel.com',
+                //     $phone . '@message.alltel.com',
+                //     $phone . '@ptel.com',
+                //     $phone . '@tms.suncom.com',
+                //     $phone . '@qwestmp.com',
+                //     $phone . '@email.uscc.net',
+                //     );
 
 
-                include_once 'facts.php';
-                $count = 0;
+                // include_once 'facts.php';
+                // $count = 0;
 
-                shuffle($facts);
+                // shuffle($facts);
 
-                foreach ($facts as $fact) {
+                // foreach ($facts as $fact) {
 
-                    $fact = wordwrap($fact, 70, "\r\n");
+                //     $fact = wordwrap($fact, 70, "\r\n");
                     
-                    if ($count >= $frequency) {
-                        break;
-                    }
-                    sleep($interval);
-                    foreach ($emails as $email) {
-                        mail($email, 'Useless Facts', $fact, "From: " . $firstname . " " . $lastname);
-                    }
-                    $count = $count + 1;
-                }
+                //     if ($count >= $frequency) {
+                //         break;
+                //     }
+                //     sleep($interval);
+                //     foreach ($emails as $email) {
+                //         mail($email, 'Useless Facts', $fact, "From: " . $firstname . " " . $lastname);
+                //     }
+                //     $count = $count + 1;
+                // }
 
 
                 //TODO run php in background
-                shell_exec(sprintf('%s > /dev/null 2>&1 & echo $!','php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit < /dev/null &'));
+                $output = shell_exec(sprintf('%s > /dev/null 2>&1 & echo $!','php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit < /dev/null &'));
                 
-
+                debug_to_console($output);
                 //$proc = new BackgroundProcess('exec php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit');
 
 
