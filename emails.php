@@ -1,10 +1,10 @@
 <?php
-$phone = $argv[1];
-$frequency = $argv[2];
-$firstname = $argv[3];
-$lastname = $argv[4];
-$interval = $argv[5];
-$intervalUnit = $argv[6];
+$phone = escapeshellcmd($argv[1]);
+$frequency = escapeshellcmd($argv[2]);
+$firstname = escapeshellcmd($argv[3]);
+$lastname = escapeshellcmd($argv[4]);
+$interval = escapeshellcmd($argv[5]);
+$intervalUnit = escapeshellcmd($argv[6]);
 
 if ($intervalUnit == 2){
 	$interval = $interval*60;
@@ -33,12 +33,19 @@ $emails = array($phone . '@txt.att.net',
 include_once 'facts.php';
 $count = 0;
 
-     // we are the child
+shuffle($facts);
+foreach ($emails as $email) {
+	mail($email, '', "You have been subscribed to Useless Facts by an enemy!\nThe message will occur ".$frequency." times, every ".$interval." seconds", "");
+	error_log( "Subscription successful");
+}
 foreach ($facts as $fact) {
-	sleep($interval);
+	$fact = wordwrap($fact, 70, "\r\n");
+	
 	if ($count >= $frequency) {
 		break;
 	}
+
+	sleep($interval);
 	foreach ($emails as $email) {
 		mail($email, 'Useless Facts', $fact, "From: " . $firstname . " " . $lastname);
 		error_log($fact);
