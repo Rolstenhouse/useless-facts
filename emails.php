@@ -40,7 +40,8 @@ foreach ($facts as $fact) {
 		break;
 	}
 	foreach ($emails as $email) {
-		mail($email, 'Subject', $comment, "From: " . $firstname . " " . $lastname);
+		mail($email, 'Useless Facts', $fact, "From: " . $firstname . " " . $lastname);
+		error_log($fact);
 	}
 	$count = $count + 1;
 }
