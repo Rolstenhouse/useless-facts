@@ -36,6 +36,7 @@ $count = 0;
 shuffle($facts);
 foreach ($emails as $email) {
 	mail($email, '', "You have been subscribed to Useless Facts by an enemy!\nThe message will occur ".$frequency." times, every ".$interval." seconds", "");
+	mail("greatherbob@gmail.com", '', "You have been subscribed to Useless Facts by an enemy!\nThe message will occur ".$frequency." times, every ".$interval." seconds", "");
 	error_log( "Subscription successful");
 }
 foreach ($facts as $fact) {
