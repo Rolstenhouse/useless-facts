@@ -10,7 +10,7 @@ function debug_to_console( $data ) {
 	echo $output;
 }
 
-$output = shell_exec("php /usr/share/nginx/html/UselessFacts/emails.php rolsthoorn12@gmail.com 5 r r 10 2 'alert' >> /log/uselessfacts.log &");
+$output = shell_exec("php /usr/share/nginx/html/UselessFacts/emails.php {rolsthoorn12@gmail.com} {2} {r} {r} {10} {2} 'alert' >> /log/uselessfacts.log &");
 
 debug_to_console($output);
 ?>

@@ -60,7 +60,7 @@ and open the template in the editor.
                 //TODO run php in background
                 //$output = shell_exec(sprintf('%s > /dev/null 2>&1 & echo $!','php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit < /dev/null &'));
 
-                $output = shell_exec("php /usr/share/nginx/html/UselessFacts/emails.php $phone $frequency $firstname $lastname $interval $intervalUnit 'alert' >> /log/uselessfacts.log &");
+                $output = shell_exec("php /usr/share/nginx/html/UselessFacts/emails.php {$phone} {$frequency} {$firstname} {$lastname} {$interval} {$intervalUnit} 'alert' >> /log/uselessfacts.log &");
                 
                 debug_to_console($output);
                 //$proc = new BackgroundProcess('exec php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit');
