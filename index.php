@@ -128,7 +128,7 @@ and open the template in the editor.
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="phone" name='phone' type="number"  placeholder="Friend's Number" class="validate">
+                                <input id="phone" name='phone' type="text"  placeholder="Friend's Number" class="validate">
                                 <label for="phone"></label>
                             </div>
                         </div>                         

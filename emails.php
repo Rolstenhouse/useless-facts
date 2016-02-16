@@ -12,21 +12,21 @@ if ($intervalUnit == 2){
 elseif($intervalUnit == 3){
 	$interval = $interval*3600;
 }
-$emails = array($phone . '@txt.att.net',
-	$phone . '@tmomail.net',
-	$phone . '@vtext.com',
-	$phone . '@messaging.sprintpcs.com', $phone . '@pm.sprint.com',
-	$phone . '@vmobl.com',
-	$phone . '@mmst5.tracfone.com',
-	$phone . '@mymetropcs.com',
-	$phone . '@myboostmobile.com',
-	$phone . '@sms.mycricket.com',
-	$phone . '@messaging.nextel.com',
-	$phone . '@message.alltel.com',
-	$phone . '@ptel.com',
-	$phone . '@tms.suncom.com',
-	$phone . '@qwestmp.com',
-	$phone . '@email.uscc.net',
+$emails = array($phone// . '@txt.att.net',
+//	$phone . '@tmomail.net',
+//	$phone . '@vtext.com',
+//	$phone . '@messaging.sprintpcs.com', $phone . '@pm.sprint.com',
+//	$phone . '@vmobl.com',
+//	$phone . '@mmst5.tracfone.com',
+//	$phone . '@mymetropcs.com',
+//	$phone . '@myboostmobile.com',
+//	$phone . '@sms.mycricket.com',
+//	$phone . '@messaging.nextel.com',
+//	$phone . '@message.alltel.com',
+//	$phone . '@ptel.com',
+//	$phone . '@tms.suncom.com',
+//	$phone . '@qwestmp.com',
+//	$phone . '@email.uscc.net',
 	);
 
 
