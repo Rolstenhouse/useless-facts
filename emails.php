@@ -6,6 +6,16 @@ $lastname = escapeshellcmd($argv[4]);
 $interval = escapeshellcmd($argv[5]);
 $intervalUnit = escapeshellcmd($argv[6]);
 
+function debug_to_console( $data ) {
+
+	if ( is_array( $data ) )
+		$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+	else
+		$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+
+	echo $output;
+}
+
 if ($intervalUnit == 2){
 	$interval = $interval*60;
 }
@@ -38,6 +48,7 @@ foreach ($emails as $email) {
 	mail($email, '', "You have been subscribed to Useless Facts by an enemy!\nThe message will occur ".$frequency." times, every ".$interval." seconds", "");
 	// mail("greatherbob@gmail.com", '', "You have been subscribed to Useless Facts by an enemy!\nThe message will occur ".$frequency." times, every ".$interval." seconds", "");
 	error_log( "Subscription successful");
+	debug_to_console("First hit");
 }
 foreach ($facts as $fact) {
 	$fact = wordwrap($fact, 70, "\r\n");

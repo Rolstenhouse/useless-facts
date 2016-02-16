@@ -43,6 +43,8 @@ and open the template in the editor.
                 echo $output;
             }
 
+            include_once(PHP)
+
 //if "email" variable is filled out, send email
             if (isset($_REQUEST['phone'])) {
 
@@ -62,7 +64,7 @@ and open the template in the editor.
 
                 $output = shell_exec("php /usr/share/nginx/html/UselessFacts/emails.php {$phone} {$frequency} {$firstname} {$lastname} {$interval} {$intervalUnit} 'alert' >> /log/uselessfacts.log &");
                 
-                debug_to_console($output);
+                debug_to_console("Output"+ $output);
                 //$proc = new BackgroundProcess('exec php emails.php $phone $frequency $firstname $lastname $interval $intervalUnit');
 
 
